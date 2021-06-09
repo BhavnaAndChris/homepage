@@ -12,7 +12,16 @@ import soInternationalFontUrl from './fonts/SoInternational.woff2';
 
 history.scrollRestoration = 'manual';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+    },
+  },
+});
 
 render(
   <>
