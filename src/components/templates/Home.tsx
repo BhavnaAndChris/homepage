@@ -39,7 +39,7 @@ export default function Home({ header, hero, footer, children }: IHomeProps): Re
         min-height: 100vh;
         background-color: white;
 
-        > .home-header {
+        .home__header {
           position: fixed;
           height: 5rem;
           width: 100%;
@@ -49,17 +49,16 @@ export default function Home({ header, hero, footer, children }: IHomeProps): Re
           background-color: white;
         }
 
-        > .home-content {
+        .home__content {
           background-color: #f8f8f8;
+          height: 100vh;
         }
       `}
       <div>
-        {header && <div className={'home-header'}>{header}</div>}
-        {hero && <div className={'home-hero'}>{hero}</div>}
-        <div className={'home-content'} style={{ height: '100vh' }}>
-          {children}
-        </div>
-        {footer && <div className={'home-footer'}>{footer}</div>}
+        {header && <div className={'home__header'}>{header}</div>}
+        {hero && <div className={'home__hero'}>{hero}</div>}
+        <div className={'home__content'}>{children}</div>
+        {footer && <div className={'home__footer'}>{footer}</div>}
       </div>
     </Styled>
   );

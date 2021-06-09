@@ -62,6 +62,7 @@ module.exports = (env) => {
         : []),
     ],
     devServer: {
+      contentBase: path.join(__dirname, 'docs'),
       stats: 'minimal',
       compress: true,
       port: 3000,

@@ -3,13 +3,16 @@ import 'regenerator-runtime/runtime';
 
 import { render } from 'react-dom';
 import { css, Style } from 'react-css-in-js';
-import Home from './components/templates/Home';
-import Hero from './components/organisms/Hero';
-import soInternationalFontUrl from './fonts/SoInternational.woff2';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { rem } from './constants';
+import FadeIn from './components/atoms/FadeIn';
+import Hero from './components/organisms/Hero';
+import Home from './components/templates/Home';
+import soInternationalFontUrl from './fonts/SoInternational.woff2';
 
 history.scrollRestoration = 'manual';
-window.onbeforeunload = () => window.scrollTo(0, 0);
+
+const queryClient = new QueryClient();
 
 render(
   <>
@@ -33,7 +36,11 @@ render(
         }
       `}
     </Style>
-    <Home hero={<Hero />} />
+    <QueryClientProvider client={queryClient}>
+      <FadeIn>
+        <Home hero={<Hero />} />
+      </FadeIn>
+    </QueryClientProvider>
   </>,
   document.getElementById('root'),
 );

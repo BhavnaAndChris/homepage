@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { MutableRefObject, RefObject, useMemo } from 'react';
+import { useSuspended } from '../components/atoms/SuspenseEx';
 
 export interface IParallax {
   x: number;
@@ -12,6 +13,7 @@ export default <TElement extends HTMLElement>(): [RefObject<TElement>, IParallax
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const parallax = useMemo(() => ({ x, y }), [x, y]);
+  const suspended = useSuspended();
 
   const ref: MutableRefObject<TElement | null> = useMemo(() => {
     let current: TElement | null = null;
@@ -35,6 +37,7 @@ export default <TElement extends HTMLElement>(): [RefObject<TElement>, IParallax
 
     function update() {
       const rect = el.getBoundingClientRect();
+
       setX(Math.max(0, Math.min(1, (rect.width + rect.left) / (rect.width + window.innerWidth))));
       setY(Math.max(0, Math.min(1, (rect.height + rect.top) / (rect.height + window.innerHeight))));
     }
@@ -47,7 +50,7 @@ export default <TElement extends HTMLElement>(): [RefObject<TElement>, IParallax
       window.removeEventListener('scroll', update);
       window.removeEventListener('resize', update);
     };
-  }, [element]);
+  }, [element, suspended]);
 
   return [ref, parallax];
 };
