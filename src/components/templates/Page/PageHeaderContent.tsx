@@ -1,6 +1,6 @@
 import { styled } from 'tsstyled';
 import pageChildStyle from './pageChildStyle';
-import { useTheme } from '../../../theme';
+import { useTheme } from '../../../styles/theme';
 
 export default styled('div')
   .props<{ $isVisible: boolean }>({ extend: true })

@@ -1,5 +1,5 @@
 import { getId, styled } from 'tsstyled';
-import { useTheme } from '../theme';
+import { useTheme } from './theme';
 import useViewHeight from '../hooks/useViewHeight';
 import rockSaltFontWoff2 from '../fonts/Rock-Salt.woff2';
 import rockSaltFontWoff from '../fonts/Rock-Salt.woff';

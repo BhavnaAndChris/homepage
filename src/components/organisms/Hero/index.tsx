@@ -4,7 +4,7 @@ import HeroImage from './HeroImage';
 import HeroText from './HeroText';
 import HeroTitle from './HeroTitle';
 import HeroSubtitle from './HeroSubtitle';
-import { useTheme } from '../../../theme';
+import { useTheme } from '../../../styles/theme';
 import useBackgrounds from '../../../hooks/useBackgrounds';
 import { breakLaptop, breakTablet } from '../../../hooks/useResponsiveBreakpoint';
 import absoluteFill from '../../../styles/helperAbsoluteFill';

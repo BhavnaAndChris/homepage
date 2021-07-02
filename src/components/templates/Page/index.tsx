@@ -5,7 +5,7 @@ import PageHero from './PageHero';
 import PageContent from './PageContent';
 import PageFooter from './PageFooter';
 import ScrollReset from '../../atoms/ScrollReset';
-import { useTheme } from '../../../theme';
+import { useTheme } from '../../../styles/theme';
 
 export default styled('div', 'Page')
   .props<{

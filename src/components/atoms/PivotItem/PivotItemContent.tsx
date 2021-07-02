@@ -1,5 +1,5 @@
 import { styled } from 'tsstyled';
-import { useTheme } from '../../../theme';
+import { useTheme } from '../../../styles/theme';
 import { breakLaptop } from '../../../hooks/useResponsiveBreakpoint';
 
 export default styled('div').use(() => ({ theme: useTheme() }))`
