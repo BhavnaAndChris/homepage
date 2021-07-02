@@ -8,12 +8,14 @@
   },
   "dependencies": {
     "core-js": "^3.14.0",
+    "focus-trap-react": "^8.5.1",
+    "iconoir-react": "^2.0.0",
     "react": "^17.0.2",
-    "react-css-in-js": "^4.0.3",
     "react-dom": "^17.0.2",
     "react-image": "^4.0.3",
     "react-query": "^3.16.1",
     "regenerator-runtime": "^0.13.8",
+    "tsstyled": "^1.2.4",
     "zod": "^3.1.0"
   },
   "devDependencies": {

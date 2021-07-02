@@ -5,9 +5,14 @@ import { useEffect, useState } from 'react';
  */
 export enum ResponsiveBreakpoint {
   /**
-   * Less than 384px (~24rem) wide.
+   * Less than 320px (~20rem, IPhone 5) wide.
    */
-  mobile = 0,
+  minimum = 0,
+
+  /**
+   * At least 320px (~20rem) and less than 384px (~24rem) wide.
+   */
+  mobile = 320,
 
   /**
    * At least 384px (~24rem) and less than 768px (~48rem) wide.
@@ -24,6 +29,11 @@ export enum ResponsiveBreakpoint {
    */
   desktop = 1280,
 }
+
+export const breakMobile = `@media only screen and (min-width: ${ResponsiveBreakpoint.mobile}px)` as const;
+export const breakTablet = `@media only screen and (min-width: ${ResponsiveBreakpoint.tablet}px)` as const;
+export const breakLaptop = `@media only screen and (min-width: ${ResponsiveBreakpoint.laptop}px)` as const;
+export const breakDesktop = `@media only screen and (min-width: ${ResponsiveBreakpoint.desktop}px)` as const;
 
 export default (): ResponsiveBreakpoint => {
   const [breakpoint, setBreakpoint] = useState<ResponsiveBreakpoint>(getBreakpoint());

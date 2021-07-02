@@ -1,6 +1,6 @@
-import { Css, css } from 'react-css-in-js';
+import { css } from 'tsstyled';
 
-export default (): Css => css`
+export default css`
   position: absolute;
   top: 0;
   bottom: 0;

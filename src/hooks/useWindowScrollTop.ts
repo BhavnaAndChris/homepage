@@ -5,17 +5,18 @@ export interface IScrollState {
   delta: number;
 }
 
-export default (): IScrollState => {
+export default (from: 'top' | 'left' = 'top'): IScrollState => {
+  const scrollProp = from === 'top' ? 'scrollTop' : 'scrollLeft';
   const [state, setState] = useState<IScrollState>({
-    value: window.document.documentElement.scrollTop,
+    value: window.document.documentElement[scrollProp],
     delta: 0,
   });
 
   useEffect(() => {
     function onScroll() {
       setState((current) => ({
-        value: window.document.documentElement.scrollTop,
-        delta: window.document.documentElement.scrollTop - current.value,
+        value: window.document.documentElement[scrollProp],
+        delta: window.document.documentElement[scrollProp] - current.value,
       }));
     }
 

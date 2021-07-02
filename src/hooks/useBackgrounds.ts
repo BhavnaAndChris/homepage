@@ -10,7 +10,8 @@ export default (): string[] => {
     async () =>
       fetch(url)
         .then((response) => response.json())
-        .then(schema.parse),
+        .then(schema.parse)
+        .then((values) => values.map((value) => `/backgrounds/${value}`)),
     { suspense: true },
   );
 

@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - stable
+branches:
+  only:
+    - main
+install:
+  - npm ci
+script:
+  - npm run build
+deploy:
+  - provider: pages
+    skip_cleanup: true
+    keep_history: true
+    local_dir: docs
+    github_token: $GITHUB_TOKEN

@@ -1,45 +1,9 @@
-import { ReactElement, ReactNode, useCallback, useEffect, useState } from 'react';
-import { css, Style, Styled } from 'react-css-in-js';
-import SuspenseEx from './SuspenseEx';
+import { styled } from 'tsstyled';
+import { animationFadeIn } from '../../styles/GlobalStyle';
 
-export interface IFadeInProps {
-  seconds?: number;
-  className?: string;
-  children?: ReactNode;
-  onAnimationEnd?: () => void;
-}
-
-export default function FadeIn({ seconds = 1, className, children, onAnimationEnd }: IFadeInProps): ReactElement {
-  const [end, setEnd] = useState(false);
-  const handleAnimationEnd = useCallback(() => setEnd(true), []);
-
-  useEffect(() => {
-    end && onAnimationEnd?.();
-  }, [end]);
-
-  return (
-    <>
-      <Style>
-        {css`
-          @keyframes fade-in__keyframes {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 100%;
-            }
-          }
-        `}
-      </Style>
-      <SuspenseEx fallback={null}>
-        <Styled className={className}>
-          {css`
-            animation: fade-in__keyframes ${seconds}s ease-in-out 100ms;
-            animation-fill-mode: both;
-          `}
-          <div onAnimationEnd={handleAnimationEnd}>{children}</div>
-        </Styled>
-      </SuspenseEx>
-    </>
-  );
-}
+export default styled('div', 'FadeIn')
+  .props<{ $seconds?: number }>({ extend: true })
+  .use(() => ({ $seconds: 1 }))`
+    animation: ${animationFadeIn} ${(props) => props.$seconds ?? 1}s ease-in-out 100ms;
+    animation-fill-mode: both;
+  `;
