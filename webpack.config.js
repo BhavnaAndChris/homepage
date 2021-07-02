@@ -1,24 +1,30 @@
-/* global __dirname */
 const path = require('path');
-const process = require('process');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-/** @type {import('webpack').Configuration} */
-module.exports = (env) => {
+const publicPath = path.resolve('public');
+
+/** @type {(env: Record<string, unknown>) => import('webpack').Configuration} */
+module.exports = (env, argv) => {
+  const isBuild = !!env.WEBPACK_BUILD;
+  const mode = argv.mode || isBuild ? 'production' : 'development';
+
   return {
-    mode: env.WEBPACK_BUNDLE ? 'production' : 'development',
-    // mode: 'production',
+    mode,
     target: 'web',
-    entry: path.resolve(process.cwd(), 'src'),
+    entry: path.resolve('src'),
     output: {
-      path: path.resolve(process.cwd(), 'public'),
+      path: publicPath,
       filename: 'bundle/[name].[chunkhash:8].js',
       assetModuleFilename: 'bundle/[name].[contenthash:8].[ext]',
       publicPath: '/',
     },
     stats: 'errors-warnings',
-    performance: { hints: !!env.WEBPACK_BUNDLE && 'warning', maxEntrypointSize: 1024 * 1024, maxAssetSize: 1024 * 1024 },
+    performance: {
+      hints: isBuild && 'warning',
+      maxEntrypointSize: 1024 * 1024,
+      maxAssetSize: 1024 * 1024,
+    },
     devtool: 'source-map',
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
@@ -26,26 +32,22 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          oneOf: [
-            {
-              test: /\.(tsx?|jsx?)$/,
-              exclude: /node_modules/,
-              use: ['babel-loader'],
+          test: /\.(tsx?|jsx?)$/,
+          exclude: /node_modules/,
+          use: ['babel-loader'],
+        },
+        {
+          test: /\.(woff2?)$/,
+          type: 'asset/inline',
+        },
+        {
+          test: /\.(gif|jpe?g|png|apng|svg|webp)$/,
+          type: 'asset',
+          parser: {
+            dataUrlCondition: {
+              maxSize: 4 * 1024, // 4kb
             },
-            {
-              test: /\.(woff2?)$/,
-              type: 'asset/inline',
-            },
-            {
-              test: /\.(gif|jpe?g|png|apng|svg|webp)$/,
-              type: 'asset',
-              parser: {
-                dataUrlCondition: {
-                  maxSize: 4 * 1024, // 4kb
-                },
-              },
-            },
-          ],
+          },
         },
       ],
     },
@@ -55,18 +57,18 @@ module.exports = (env) => {
         minify: false,
         template: path.resolve('src/index.html'),
       }),
-      ...(env.WEBPACK_BUNDLE
+      ...(isBuild
         ? [
             new BundleAnalyzerPlugin({
               analyzerMode: 'static',
               openAnalyzer: false,
-              reportFilename: path.resolve(__dirname, 'out/bundle-report.html'),
+              reportFilename: path.resolve('out/bundle-report.html'),
             }),
           ]
         : []),
     ],
     devServer: {
-      contentBase: path.join(__dirname, 'public'),
+      contentBase: publicPath,
       stats: 'minimal',
       compress: true,
       port: 3000,

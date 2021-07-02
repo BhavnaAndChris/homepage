@@ -1,5 +1,7 @@
 # Website: sointernational.love
 
+[![build status](https://badgen.net/travis/SoInternational/sointernational.github.io/main?label=build)](https://travis-ci.com/github/SoInternational/sointernational.github.io)
+
 The homepage of Bhavna and Chris (and Mimi).
 
 ## Getting Started
@@ -8,6 +10,7 @@ The homepage of Bhavna and Chris (and Mimi).
 2. Run `npm i` at the repo root to install dependencies.
 3. Run `npm start` to test locally.
 4. Commit and push the `main` branch to publish.
+   * It'll take a few minutes to build and publish.
 
 ## Adding Blog Posts
 

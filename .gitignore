@@ -1,9 +1,7 @@
 node_modules/
-out/
-
+/out
 /public/bundle
 /public/index.html
 .DS_Store
-.commit
 *.log
 *.tgz

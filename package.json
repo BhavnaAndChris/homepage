@@ -1,97 +1,54 @@
 {
   "private": true,
   "scripts": {
+    "build": "del-cli public/bundle public/index.html && node ./build && webpack",
     "test": "tsc && eslint src",
-    "build": "del-cli public/bundle public/index.html && node ./build && webpack --mode=production",
     "start": "node ./build && webpack serve"
   },
   "dependencies": {
-    "core-js": "^3.14.0",
-    "focus-trap-react": "^8.5.1",
+    "core-js": "^3.15.2",
+    "focus-trap-react": "^8.6.0",
     "iconoir-react": "^2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-image": "^4.0.3",
-    "react-query": "^3.16.1",
+    "react-query": "^3.18.1",
     "regenerator-runtime": "^0.13.8",
     "tsstyled": "^1.2.4",
-    "zod": "^3.1.0"
+    "zod": "^3.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.3",
-    "@babel/core": "^7.14.3",
-    "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/plugin-proposal-decorators": "^7.14.2",
-    "@babel/preset-env": "^7.14.4",
-    "@babel/preset-react": "^7.13.13",
-    "@babel/preset-typescript": "^7.13.0",
-    "@types/node": "^15.12.1",
-    "@types/prettier": "^2.2.3",
-    "@types/react": "^17.0.9",
-    "@types/react-dom": "^17.0.6",
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/jest": "^26.0.23",
+    "@types/prettier": "^2.3.1",
+    "@types/react": "^17.0.13",
+    "@types/react-dom": "^17.0.8",
     "@types/react-query": "^1.2.9",
-    "@typescript-eslint/eslint-plugin": "^4.26.0",
-    "@typescript-eslint/parser": "^4.26.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
-    "del-cli": "^3.0.1",
-    "eslint": "^7.28.0",
+    "del-cli": "^4.0.0",
+    "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.3.1",
-    "prettier": "^2.3.1",
+    "html-webpack-plugin": "^5.3.2",
+    "prettier": "^2.3.2",
     "remark": "^13.0.0",
     "remark-parse": "^9.0.0",
-    "style-loader": "^2.0.0",
+    "style-loader": "^3.0.0",
     "typescript": "4.2.x",
-    "unified": "^9.2.1",
+    "unified": "^9.2.2",
     "url-loader": "^4.1.1",
-    "webpack": "^5.38.1",
+    "webpack": "^5.41.1",
     "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.7.0",
+    "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
-  },
-  "browserslist": [
-    "defaults"
-  ],
-  "prettier": {
-    "printWidth": 120,
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "corejs": {
-            "version": "3.14",
-            "proposals": true
-          },
-          "useBuiltIns": "entry"
-        }
-      ],
-      [
-        "@babel/preset-react",
-        {
-          "runtime": "automatic"
-        }
-      ],
-      "@babel/preset-typescript"
-    ],
-    "assumptions": {
-      "setPublicClassFields": true
-    },
-    "plugins": [
-      [
-        "@babel/plugin-proposal-decorators",
-        {
-          "legacy": true
-        }
-      ],
-      "@babel/plugin-proposal-class-properties"
-    ]
   }
 }

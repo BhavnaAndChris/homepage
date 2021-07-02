@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
+    "types": ["jest"],
+    "lib": ["DOM", "ESNext"],
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
     "strict": true,
     "downlevelIteration": true,
     "esModuleInterop": true,
-    "experimentalDecorators": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,

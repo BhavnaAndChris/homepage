@@ -1,6 +1,8 @@
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'react', 'prettier'],
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -8,13 +10,6 @@ module.exports = {
     'plugin:prettier/recommended',
     'prettier',
   ],
-  plugins: ['@typescript-eslint', 'react', 'prettier'],
-  env: {
-    'shared-node-browser': true,
-    commonjs: true,
-    jest: true,
-  },
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
     ecmaFeatures: {
@@ -28,10 +23,9 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'warn',
-    '@typescript-eslint/no-var-requires': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
   },
-  ignorePatterns: ['node_modules', 'lib', 'coverage', '**/*.js'],
+  ignorePatterns: ['node_modules', 'coverage', 'public', '**/*.js'],
 };
