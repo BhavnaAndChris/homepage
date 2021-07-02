@@ -1,13 +1,8 @@
 import { styled } from 'tsstyled';
 
 export default styled('div')
-  .props<{ $scaleHeight?: number; $scaleWidth?: number; $x: number; $y: number }>({ extend: true })
-  .use(() => ({
-    $scaleHeight: 1,
-    $scaleWidth: 1,
-    $x: 0,
-    $y: 0,
-  }))
+  .props<{ $scaleHeight?: number; $scaleWidth?: number; $x: number; $y: number }>()
+  .use(() => ({ $scaleHeight: 1, $scaleWidth: 1, $x: 0, $y: 0 }))
   .set(({ $scaleHeight, $scaleWidth, $x, $y, style = {} }) => ({
     style: {
       ...style,

@@ -3,7 +3,7 @@ import PivotItemContent from './PivotItemContent';
 import PivotItemLink from './PivotItemLink';
 
 export default styled('div', 'PivotItem')
-  .props<{ action: { href: string; target?: string } }>({ extend: true })
+  .props<{ action: { href: string; target?: string } }>()
   .set(({ action, children }) => ({
     children: (
       <PivotItemContent>

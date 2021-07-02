@@ -3,7 +3,7 @@ import pageChildStyle from './pageChildStyle';
 import { useTheme } from '../../../styles/theme';
 
 export default styled('div')
-  .props<{ $isVisible: boolean }>({ extend: true })
+  .props<{ $isVisible: boolean }>()
   .use(() => ({ theme: useTheme() }))`
     ${pageChildStyle}
     position: fixed;

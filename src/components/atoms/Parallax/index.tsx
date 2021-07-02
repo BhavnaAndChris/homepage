@@ -4,7 +4,7 @@ import useParallax from '../../../hooks/useParallax';
 import useRefProxy from '../../../hooks/useRefProxy';
 
 export default styled('div', 'Parallax')
-  .props<{ $scaleHeight?: number; $scaleWidth?: number }>({ extend: true })
+  .props<{ $scaleHeight?: number; $scaleWidth?: number }>()
   .use(() => ({ parallax: useParallax<HTMLDivElement>() }))
   .set(({ $scaleHeight, $scaleWidth, parallax, ref, children }) => ({
     ref: useRefProxy(ref, parallax.setElement),

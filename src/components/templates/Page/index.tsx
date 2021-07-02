@@ -8,11 +8,7 @@ import ScrollReset from '../../atoms/ScrollReset';
 import { useTheme } from '../../../styles/theme';
 
 export default styled('div', 'Page')
-  .props<{
-    header?: ReactNode;
-    hero?: ReactNode;
-    footer?: ReactNode;
-  }>({ extend: true })
+  .props<{ header?: ReactNode; hero?: ReactNode; footer?: ReactNode }>()
   .use(() => ({ theme: useTheme() }))
   .set(({ header, hero, children, footer }) => ({
     children: (

@@ -1,17 +1,17 @@
-import { InferProps, styled } from 'tsstyled';
+import { styled } from 'tsstyled';
 import HeroParallax from './HeroParallax';
 import HeroImage from './HeroImage';
 import HeroText from './HeroText';
 import HeroTitle from './HeroTitle';
 import HeroSubtitle from './HeroSubtitle';
-import { useTheme } from '../../../styles/theme';
 import useBackgrounds from '../../../hooks/useBackgrounds';
 import { breakLaptop, breakTablet } from '../../../hooks/useResponsiveBreakpoint';
+import { useTheme } from '../../../styles/theme';
 import absoluteFill from '../../../styles/helperAbsoluteFill';
 import vignetteImage from '../../../styles/helperVignetteImage';
 
 export default styled('section', 'Hero')
-  .props((props: Omit<InferProps<'div'>, 'children'>) => ({ ...props, children: undefined }))
+  .props<{ children: undefined }>()
   .use(() => ({ theme: useTheme(), backgrounds: useBackgrounds() }))
   .set(({ backgrounds }) => ({
     $background:
